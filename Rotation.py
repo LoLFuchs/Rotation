@@ -1,6 +1,6 @@
 import time
 
-
+EndTime = 0
 rotationList = []
 Run = True
 isRotaiton = False
@@ -34,6 +34,15 @@ def RotationHelp():
     print("/r jump     -> springt zum ausgewählten Rotations Punkt")
     print("/r end      -> beendet die Rotation")
 
+def AlarmHelp():
+    print("<-----------------------  Alarm  ----------------------->")
+    print("/a          -> zeigt den derzeitigen Alarm ")
+    print("/a set      -> startet und legt den Startpunkt des Alarms fest")
+    print("/a clear    -> löscht den Alarm")
+    print("/a help     -> zeigt Alarm Command List")
+
+
+
 def RotationStart(Point):
     global RotationPoint
     RotationPoint = Point
@@ -44,6 +53,18 @@ def ShowRotation():
     else:
         print("bitte füge zuerst einen Rotationspunkt hinzu oder achte darauf das der Rotationspunkt nicht größer als die Liste ist")
 
+def AlarmStart(EndTimeUser):
+    
+    global StartTimeMinute
+    StartTimeMinute = time.strftime("%M")
+    
+    global StartTimeHour
+    StartTimeHour = time.strftime("%H") 
+
+    global EndTime 
+    EndTime = EndTimeUser
+    global EndTimeStr 
+    EndTimeStr = str(EndTime)
 
 
 
@@ -116,6 +137,23 @@ while Run:
     elif Command == "/r help":
         RotationHelp()
     
+    elif Command == "/a ":
+        print("...")
+    
+    elif Command == "/a help":
+        AlarmHelp()
+    
+    elif Command == "/a set":
+        print("Schreibe HHMM")
+        AlarmStart(int(input()))
+        print("Alarm auf " + str(EndTimeStr[0:2]) + ":" + str(EndTimeStr[2:]))
+    
+    elif Command == "/a clear":
+        print("...")
     else:
         print("command " + Command + " not found.")
         print("try /help for help")
+
+
+    if time.strftime("%H%M") == str(EndTime):
+       print("ALARM")
