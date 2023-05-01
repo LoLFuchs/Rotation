@@ -44,29 +44,44 @@ def ShowRotation():
     else:
         print("bitte füge zuerst einen Rotationspunkt hinzu oder achte darauf das der Rotationspunkt nicht größer als die Liste ist")
 
+
+
+
+
 print(time.strftime("%H:%M:%S"))
 
-
+#--------------------------------------Commands---------------------------------#
 while Run:
     Command = input()
 
     if Command == "/new":
         NewItem()
+    
     elif Command == "/del":
         ShowList()
         print("welcher Index soll gelöscht werden?")
-        deletItem(int(input()))
+        Item = int(input())
+        if Item <= len(rotationList) - 1:
+            deletItem(int(Item))
+        else: 
+            print("Item konnte nicht gelöscht werden")
+
     elif Command == "/show":
         ShowList()
+
     elif Command == "/help":
         Help()
+
     elif Command == "/exit":
         Run = False
         exit()
+    
     elif Command == "/time":
         print(time.strftime("%H:%M:%S"))
+    
     elif Command == "/r":
         ShowRotation()
+    
     elif Command == "/r start":
         if isRotaiton == False:
             print("wo willst du mit der Rotation anfangen")
@@ -77,6 +92,7 @@ while Run:
                 isRotaiton = True
         else:
             print("es läuft bereits eine Rotation")
+    
     elif Command == "/r next":
         if RotationPoint + 1 == len(rotationList):
             RotationPoint = 0
@@ -84,19 +100,22 @@ while Run:
         else:
             RotationPoint += 1 
             ShowRotation()
+    
     elif Command == "/r jump":
         if isRotaiton == True:
             print("wo willst du mit der Rotation hinspringen")
             RotationStart(int(input()))
         else:
             print("start erst eine Rotation.")
+    
     elif Command == "/r end":
         print("Rotation abgebrochen")
         isRotaiton = False
         RotationPoint = 0
+    
     elif Command == "/r help":
         RotationHelp()
+    
     else:
         print("command " + Command + " not found.")
         print("try /help for help")
-
