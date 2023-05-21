@@ -5,6 +5,7 @@ rotationList = []
 Run = True
 isRotaiton = False
 RotationPoint = 0
+version = "1.0.2"
 
 def NewItem():
     print("New Item Name...")
@@ -21,10 +22,11 @@ def Help():
     print("<-----------------------  Command List  ----------------------->")
     print("/new     -> fügt ein neuen Punkt in der Rotation hinzu")
     print("/del     -> löscht einen Punkt in der Rotation nach dem Index")
-    print("show     -> zeigt die derzeitige Rotation")
+    print("/show     -> zeigt die derzeitige Rotation")
     print("/help    -> command Liste")
     print("/exit    -> beendet den Vorgang")
     print("/time    -> zeigt derzeitige Uhrzeit")
+    print("/v       -> zeigt derzeitige Version")    
 
 def RotationHelp():
     print("<-----------------------  Rotation  ----------------------->")
@@ -93,7 +95,7 @@ while Run:
     elif Command == "/help":
         Help()
 
-    elif Command == "/exit":
+    elif Command == "/exit" or Command == "exit":
         Run = False
         exit()
     
@@ -150,9 +152,12 @@ while Run:
     
     elif Command == "/a clear":
         print("...")
+    elif Command == "/v":
+        print(f"derzeitige Verson {version}")
+    
     else:
         print("command " + Command + " not found.")
-        print("try /help for help")
+        print("try /help for commands")
 
 
     if time.strftime("%H%M") == str(EndTime):
