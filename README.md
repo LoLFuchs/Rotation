@@ -4,11 +4,11 @@
     <-----------------------  Command List  ----------------------->
     /new     -> fügt ein neuen Punkt in der Rotation hinzu
     /del     -> löscht einen Punkt in der Rotation nach dem Index
-    show     -> zeigt die derzeitige Rotation
+    /show     -> zeigt die derzeitige Rotation
     /help    -> command Liste
     /exit    -> beendet den Vorgang
     /time    -> zeigt derzeitige Uhrzeit
-
+    /v       -> zeigt derzeitige Version
 
     <-----------------------  Rotation  ----------------------->
     /r          -> zeigt den derzeitigen Rotationspunkt 
